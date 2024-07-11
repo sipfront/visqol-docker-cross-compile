@@ -2,12 +2,13 @@
 # Option 2: https://stackoverflow.com/questions/44166971/pulling-from-a-local-docker-image-instead
 #
 # Right now I chose option 2
-FROM local-amazonlinux:2 AS buildstage0
+FROM local-amazonlinux:2023 AS buildstage0
+# FROM local-amazonlinux:2 AS buildstage0
 
 # Download all necessary packages
 # eventually!
 # https://serverfault.com/questions/868600/can-i-install-a-recent-gcc-from-binaries-on-amazon-linux
-RUN yum install -y sudo 
+RUN yum install -y sudo
 RUN yum update -y && \
     yum groupinstall 'Development Tools' -y && \
     yum -y install gcc openssl-devel bzip2-devel libffi-devel wget tar which
