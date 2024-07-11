@@ -14,6 +14,7 @@ RUN yum update -y && \
 
 # https://techviewleo.com/how-to-install-python-on-amazon-linux/
 # https://stackoverflow.com/questions/66255730/python3-8-devel-package-for-amazon-linux
+RUN sudo amazon-linux-extras enable python3.8
 RUN yum install -y python3.8 python3.8-devel
 
 # Set Up Bazel
