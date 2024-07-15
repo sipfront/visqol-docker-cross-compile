@@ -35,7 +35,7 @@ WORKDIR /visqol
 # [3] https://dev.to/0xbf/how-to-get-glibc-version-c-lang-26he
 FROM buildstage1 as buildstage2
 COPY file_path.h src/include/
-COPY .bazelrc setup.py test.py callee.wav caller.wav build_aws2023.sh /visqol/
+COPY .bazelrc setup.py test.py callee.wav caller.wav build.sh /visqol/
 
 # FROM buildstage2 as buildstage3
 RUN chmod +x build.sh

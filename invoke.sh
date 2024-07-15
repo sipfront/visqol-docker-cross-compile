@@ -2,7 +2,7 @@
 
 # Specify container name
 container_name="sipfront-test"
-aws_linux_2=0
+aws_linux_2=1
 
 # Pull docker image and tag it
 if [ "$aws_linux_2" == 1 ]; then
@@ -19,9 +19,10 @@ docker run --name $container_name local-amazonlinux:latest
 # Copy visqol build folder to working directory
 echo "Copying visqol build directory!"
 if [ "$aws_linux_2" == 1 ]; then
-    docker cp sipfront-test:/visqol/build/lib/visqol/ ./build_test/
+    docker cp sipfront-test:/visqol/build/lib/visqol/ ./build-binaries-aws2/
 else
-    docker cp sipfront-test:/visqol/build/lib/visqol/ ./build_test_aws2023/
+    docker cp sipfront-test:/visqol/build/lib/visqol/ ./build-binaries-aws2023/
+fi
 
 # Remove used container
 echo "Removing container!"
