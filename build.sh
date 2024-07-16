@@ -16,3 +16,6 @@ bazel build :visqol -c opt
 
 echo "4. Build .so visqol for python!"
 python3.8 -m pip install .
+
+echo "5. Test!"
+python3.8 test.py
