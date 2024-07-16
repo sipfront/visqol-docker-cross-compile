@@ -18,7 +18,7 @@ RUN sudo amazon-linux-extras enable python3.8
 RUN yum install -y python3.8 python3.8-devel
 
 # Set Up Bazel
-FROM buildstage0 as buildstage1
+FROM buildstage0 AS buildstage1
 RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.8.1/bazelisk-linux-amd64
 RUN chmod +x bazelisk-linux-amd64
 RUN sudo mv bazelisk-linux-amd64 /usr/local/bin/bazel
@@ -33,7 +33,7 @@ WORKDIR /visqol
 # [1] https://stackoverflow.com/questions/55474690/stdfilesystem-has-not-been-declared-after-including-experimental-filesystem
 # [2] https://stackoverflow.com/questions/45867379/why-does-gcc-not-seem-to-have-the-filesystem-standard-library
 # [3] https://dev.to/0xbf/how-to-get-glibc-version-c-lang-26he
-FROM buildstage1 as buildstage2
+FROM buildstage1 AS buildstage2
 COPY file_path.h src/include/
 COPY .bazelrc setup.py test.py callee.wav caller.wav build.sh /visqol/
 
