@@ -13,7 +13,7 @@ RUN dnf update -y && \
     dnf -y install gcc openssl-devel bzip2-devel libffi-devel wget tar which
 
 # https://techviewleo.com/how-to-install-python-on-amazon-linux/
-# https://stackoverflow.com/questions/66255730/python3-8-devel-package-for-amazon-linux
+# https://github.com/amazonlinux/amazon-linux-2023/issues/483
 RUN dnf install -y python3.11 python3.11-devel
 
 # Set Up Bazel
