@@ -29,7 +29,7 @@ fi
 # Pull docker image and tag it
 if [ "$aws_linux_2" == 1 ]; then
     docker pull amazonlinux:2 && docker tag amazonlinux:2 local-amazonlinux:2
-    docker build --tag="local-amazonlinux:latest" .
+    docker build --tag="local-amazonlinux:latest" -f Dockerfile.aws2 .
 else
     docker pull amazonlinux:2023 && docker tag amazonlinux:2023 local-amazonlinux:2023
     docker build --tag="local-amazonlinux:latest" -f Dockerfile.aws2023 .
