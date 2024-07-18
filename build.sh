@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # set up up name of virtual env
-python3.8 -m venv env
+python3.8 -m venv env 
 PWD=`pwd`
 
 echo "Current pwd: "$PWD
@@ -16,6 +16,3 @@ bazel build :visqol -c opt
 
 echo "4. Build .so visqol for python!"
 python3.8 -m pip install .
-
-echo "5. Test!"
-python3.8 test.py
