@@ -2,20 +2,26 @@
 # Option 2: https://stackoverflow.com/questions/44166971/pulling-from-a-local-docker-image-instead
 #
 # Right now I chose option 2
-FROM local-amazonlinux:2 AS buildstage0
+FROM local-amazonlinux:2023 AS buildstage0
 
 # Download all necessary packages
 # eventually!
 # https://serverfault.com/questions/868600/can-i-install-a-recent-gcc-from-binaries-on-amazon-linux
-RUN yum install -y sudo
-RUN yum update -y && \
-    yum groupinstall 'Development Tools' -y && \
-    yum -y install gcc openssl-devel bzip2-devel libffi-devel wget tar which
+RUN dnf install -y sudo
+RUN dnf update -y && \
+    dnf groupinstall 'Development Tools' -y && \
+    dnf -y install gcc openssl-devel bzip2-devel libffi-devel wget tar which
 
-# https://techviewleo.com/how-to-install-python-on-amazon-linux/
-# https://stackoverflow.com/questions/66255730/python3-8-devel-package-for-amazon-linux
-RUN sudo amazon-linux-extras enable python3.8
-RUN yum install -y python38 python38-devel
+# https://github.com/amazonlinux/amazon-linux-2023/issues/483
+# https://github.com/amazonlinux/amazon-linux-2023/issues/483#issuecomment-2107107453
+# https://developers.redhat.com/articles/2024/05/01/whats-new-red-hat-enterprise-linux-94#
+# https://almalinux.pkgs.org/9/almalinux-appstream-x86_64/python3.12-devel-3.12.1-4.el9.x86_64.rpm.html
+RUN dnf install -y \
+    https://repo.almalinux.org/almalinux/9/AppStream/x86_64/os/Packages/python3.12-3.12.1-4.el9.x86_64.rpm \
+    https://repo.almalinux.org/almalinux/9/AppStream/x86_64/os/Packages/python3.12-libs-3.12.1-4.el9.x86_64.rpm  \
+    https://repo.almalinux.org/almalinux/9/AppStream/x86_64/os/Packages/python3.12-pip-wheel-23.2.1-4.el9.noarch.rpm \
+    https://repo.almalinux.org/almalinux/9/AppStream/x86_64/os/Packages/libnsl2-2.0.0-1.el9.x86_64.rpm \
+    https://repo.almalinux.org/almalinux/9/AppStream/x86_64/os/Packages/python3.12-devel-3.12.1-4.el9.x86_64.rpm
 
 # Set Up Bazel
 FROM buildstage0 AS buildstage1
