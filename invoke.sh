@@ -12,9 +12,11 @@ docker build --tag="local-amazonlinux:latest" .
 # Capture the container ID
 docker run --name $container_name local-amazonlinux:latest
 
+mkdir build_test
+
 # Copy visqol build folder to working directory
 echo "Copying visqol build directory!"
-docker cp $container_name:/visqol/build/lib/visqol/ ./build_test/
+docker cp $container_name:/visqol/build/lib/visqol/ $PWD/build_test/
 
 # Remove used container
 echo "Removing container!"
