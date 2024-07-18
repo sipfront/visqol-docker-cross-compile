@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specify container name
-container_name="sipfront-compile-visqol"
+container_name="sipfront-compile-visqol-py311-aws-linux-2023"
 
 # Pull docker image and tag it
 docker pull amazonlinux:2023 && docker tag amazonlinux:2023 local-amazonlinux:2023
