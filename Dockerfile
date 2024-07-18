@@ -44,5 +44,5 @@ COPY file_path.h src/include/
 COPY .bazelrc setup.py test.py callee.wav caller.wav build.sh /visqol/
 
 FROM buildstage2 AS buildstage3
-RUN chmod +x build.sh
-RUN source ./build.sh
+# RUN chmod +x build.sh
+# RUN source ./build.sh

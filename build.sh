@@ -12,7 +12,7 @@ source $PWD/env/bin/activate
 # [1] .. https://stackoverflow.com/a/76691103
 # [2] .. https://stackoverflow.com/a/77360702
 echo "2. Install necessary python packages!"
-python3.12 -m pip install numpy scipy protobuf wheel setuptools
+python3.12 -m pip install numpy scipy soundfile protobuf wheel setuptools
 
 echo "3. Build visqol with bazel!"
 bazel build :visqol -c opt
