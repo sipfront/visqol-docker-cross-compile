@@ -14,7 +14,7 @@ docker build --tag="local-amazonlinux:latest" .
 docker run --name $container_name local-amazonlinux:latest
 
 if [ ! -d "$DIRECTORY" ]; then
-  echo "$DIRECTORY does exist."
+  echo "$DIRECTORY does not exist."
   mkdir $DIRECTORY
 fi
 
